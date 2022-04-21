@@ -5,6 +5,7 @@ const mongoose = require('mongoose')
 // mongoose.connect('mongodb://localhost/library')
 mongoose.connect('mongodb://localhost/boilerplate')
 
+const Movie = require('./models/Movie')
 
 
 
@@ -37,6 +38,18 @@ const celebrityData = [
 
 ]
 
+
+const movieData = [
+    
+    {
+        title:'Hello darkness my old friend',
+        genre:'Drama',
+        plot:'Something with heartbreak', 
+        cast:''
+    
+}
+]
+
 Celebrity.insertMany(celebrityData)
 	.then(celebrityData => {
 		console.log(`Success - added ${celebrityData.length} to the db`)
@@ -45,3 +58,17 @@ Celebrity.insertMany(celebrityData)
 	.catch(err => {
 		console.log(err)
 	})
+
+
+    Movie.insertMany(movieData)
+	.then(movieData => {
+		console.log(`Success - added ${movieData.length} to the db`)
+		mongoose.connection.close()
+	})
+	.catch(err => {
+		console.log(err)
+	})
+
+
+
+
